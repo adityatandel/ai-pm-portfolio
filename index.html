@@ -1,36 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aditya Tandel — AI + PM Portfolio</title>
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      background: #fafafa;
-      color: #111;
-    }
-    .box {
-      text-align: center;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-    p {
-      color: #555;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aditya Tandel — Product &amp; AI Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBFBF8;
+    --ink:#191B1A;
+    --muted:#6B6F6C;
+    --line:#E4E2DC;
+    --accent:#2C6E63;
+    --accent-soft:#E3EEEB;
+    --card:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* Header */
+  header{
+    padding:88px 0 56px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin:0 0 18px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(2.4rem, 5vw, 3.4rem);
+    line-height:1.05;
+    margin:0 0 20px;
+    letter-spacing:-0.01em;
+  }
+  .lede{
+    font-size:1.15rem;
+    color:var(--muted);
+    max-width:56ch;
+    margin:0;
+  }
+  .header-meta{
+    display:flex;
+    gap:28px;
+    margin-top:32px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--muted);
+    flex-wrap:wrap;
+  }
+  .header-meta a{ color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line); }
+  .header-meta a:hover{ border-color:var(--accent); color:var(--accent); }
+
+  /* Section labels */
+  .section-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    padding:56px 0 20px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .section-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+  .section-label.first{ padding-top:64px; }
+
+  /* Project card = spec sheet */
+  .project{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:4px;
+    margin-bottom:28px;
+    overflow:hidden;
+  }
+  .project-head{
+    padding:30px 32px 22px;
+    border-bottom:1px solid var(--line);
+  }
+  .project-title{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:1.5rem;
+    margin:0 0 6px;
+    letter-spacing:-0.005em;
+  }
+  .project-sub{
+    color:var(--muted);
+    font-size:0.95rem;
+    margin:0;
+  }
+  .spec{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    border-bottom:1px solid var(--line);
+  }
+  .spec:last-of-type{ border-bottom:none; }
+  .spec-key{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--muted);
+    padding:20px 16px 20px 32px;
+    border-right:1px solid var(--line);
+  }
+  .spec-val{
+    padding:20px 32px;
+    font-size:0.98rem;
+  }
+  .spec-val p{ margin:0; }
+  .cost-tag{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.92rem;
+    background:var(--accent-soft);
+    color:var(--accent);
+    padding:3px 10px;
+    border-radius:3px;
+    font-weight:500;
+  }
+  .stack-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .stack-item{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    background:#F2F1EC;
+    padding:4px 10px;
+    border-radius:3px;
+    color:var(--ink);
+  }
+  .visual{
+    padding:24px 32px 32px;
+  }
+  .visual-box{
+    width:100%;
+    aspect-ratio:16/9;
+    background:repeating-linear-gradient(
+      135deg, #F2F1EC, #F2F1EC 10px, #EAE8E1 10px, #EAE8E1 20px
+    );
+    border:1px dashed var(--line);
+    border-radius:4px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--muted);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.85rem;
+    text-align:center;
+    padding:20px;
+  }
+
+  footer{
+    padding:64px 0 80px;
+    color:var(--muted);
+    font-size:0.9rem;
+    border-top:1px solid var(--line);
+    margin-top:40px;
+  }
+
+  @media (max-width:640px){
+    .spec{ grid-template-columns:1fr; }
+    .spec-key{ border-right:none; border-bottom:1px solid var(--line); padding:14px 20px 8px; }
+    .spec-val{ padding:14px 20px 20px; }
+    .project-head{ padding:24px 20px 18px; }
+    .visual{ padding:20px; }
+    header{ padding:64px 0 40px; }
+  }
+</style>
 </head>
 <body>
-  <div class="box">
-    <h1>🚧 Portfolio coming soon</h1>
-    <p>Pipeline test — GitHub → Vercel deploy is working.</p>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Product Manager · AI Builder</p>
+    <h1>Aditya Tandel</h1>
+    <p class="lede">Senior Product Manager who scopes, builds, and ships working AI-powered tools — with a deliberate eye on cost, privacy, and the tradeoffs behind every technical choice.</p>
+    <div class="header-meta">
+      <a href="mailto:you@example.com">Email</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Resume</a>
+      <a href="#">GitHub</a>
+    </div>
+  </header>
+
+  <div class="section-label first">Enterprise Prototype</div>
+
+  <!-- PROJECT 1: Notification Management Prototype -->
+  <div class="project">
+    <div class="project-head">
+      <h2 class="project-title">Notification Management Prototype</h2>
+      <p class="project-sub">An end-to-end approval workflow for high-stakes notifications, built from a written PRD to a clickable prototype.</p>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Problem</div>
+      <div class="spec-val"><p>Teams need to send urgent notifications (e.g. outage alerts) to different user groups, but high-stakes messages require stakeholder approval first — with a full audit trail of who approved what, and when.</p></div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Why AI</div>
+      <div class="spec-val"><p>Used Claude to go from a written business requirements doc straight to a working, clickable prototype — confirming scope and page plan before building, to skip the design-to-dev handoff cycle and validate the workflow with stakeholders in hours, not weeks.</p></div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Stack</div>
+      <div class="spec-val">
+        <div class="stack-list">
+          <span class="stack-item">Claude</span>
+          <span class="stack-item">HTML</span>
+          <span class="stack-item">CSS</span>
+          <span class="stack-item">JavaScript</span>
+        </div>
+      </div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Cost</div>
+      <div class="spec-val"><span class="cost-tag">$0 — static file, no hosting or API cost</span></div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Description</div>
+      <div class="spec-val"><p>Compose a notification, route it to primary/secondary approvers, simulate the approval email with Accept/Reject actions, and log every notification's status — Pending, Approved, Rejected, Sent — in a searchable history table.</p></div>
+    </div>
+    <div class="visual">
+      <div class="visual-box">Screenshot placeholder — compose form / history table</div>
+    </div>
   </div>
+
+  <div class="section-label">Personal Projects</div>
+
+  <!-- PROJECT 2: Newsletter Digest Agent -->
+  <div class="project">
+    <div class="project-head">
+      <h2 class="project-title">Newsletter Digest Agent</h2>
+      <p class="project-sub">An automated pipeline that summarizes newsletters so nothing valuable gets lost in an unread inbox.</p>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Problem</div>
+      <div class="spec-val"><p>Newsletters pile up unread — valuable content gets lost with no easy way to scan summaries before deciding what's worth reading.</p></div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Why AI</div>
+      <div class="spec-val"><p>Used Claude to evaluate three architecture options against cost, technical depth, and maintainability, then to write and debug the chosen implementation end to end.</p></div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Stack</div>
+      <div class="spec-val">
+        <div class="stack-list">
+          <span class="stack-item">Python</span>
+          <span class="stack-item">Gmail IMAP</span>
+          <span class="stack-item">Claude API</span>
+        </div>
+      </div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Cost</div>
+      <div class="spec-val"><span class="cost-tag">~$0.01–0.03 per newsletter summarized</span></div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Description</div>
+      <div class="spec-val"><p>Connects to a dedicated Gmail inbox via IMAP, pulls new newsletters, summarizes each with Claude, and stores the digest for quick scanning — replacing manual newsletter triage with an automated pipeline.</p></div>
+    </div>
+    <div class="visual">
+      <div class="visual-box">Screenshot placeholder — digest output / architecture</div>
+    </div>
+  </div>
+
+  <!-- PROJECT 3: Personal Finance Dashboard -->
+  <div class="project">
+    <div class="project-head">
+      <h2 class="project-title">Personal Finance Dashboard</h2>
+      <p class="project-sub">A local-only dashboard built around one hard constraint: financial data never leaves the device.</p>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Problem</div>
+      <div class="spec-val"><p>Wanted a monthly view of net worth and account balances without handing financial data to any third-party app or cloud service.</p></div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Why AI</div>
+      <div class="spec-val"><p>Used Claude to design and build around a non-negotiable privacy requirement — translating "data must never leave the device" into concrete guardrails: no cloud calls, no browser storage, local-only parsing.</p></div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Stack</div>
+      <div class="spec-val">
+        <div class="stack-list">
+          <span class="stack-item">HTML</span>
+          <span class="stack-item">CSS</span>
+          <span class="stack-item">JavaScript</span>
+          <span class="stack-item">Chart.js</span>
+          <span class="stack-item">SheetJS</span>
+        </div>
+      </div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Cost</div>
+      <div class="spec-val"><span class="cost-tag">$0 — fully static, in-browser only</span></div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Description</div>
+      <div class="spec-val"><p>A single self-contained HTML dashboard that parses a monthly spreadsheet export entirely in the browser and renders account and net-worth charts — no login, no server, no data transmission.</p></div>
+    </div>
+    <div class="visual">
+      <div class="visual-box">Screenshot placeholder — dashboard charts (sample data)</div>
+    </div>
+  </div>
+
+  <!-- PROJECT 4: Stock Research Agent -->
+  <div class="project">
+    <div class="project-head">
+      <h2 class="project-title">Stock Research Agent</h2>
+      <p class="project-sub">An on-demand research assistant that consolidates data and news into one readable report.</p>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Problem</div>
+      <div class="spec-val"><p>Researching a stock or ETF before investing means manually checking multiple sites and reading scattered news — a repetitive, time-consuming process.</p></div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Why AI</div>
+      <div class="spec-val"><p>Used Claude to scope the full system, weigh data-source tradeoffs like free API limits versus paid reliability, and design the synthesis logic that turns raw data into a readable summary.</p></div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Stack</div>
+      <div class="spec-val">
+        <div class="stack-list">
+          <span class="stack-item">Python</span>
+          <span class="stack-item">Telegram Bot API</span>
+          <span class="stack-item">yfinance</span>
+          <span class="stack-item">SEC EDGAR</span>
+          <span class="stack-item">Tavily</span>
+          <span class="stack-item">Claude API</span>
+        </div>
+      </div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Cost</div>
+      <div class="spec-val"><span class="cost-tag">Mostly free — ~$0.01–0.03 per report generated</span></div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Description</div>
+      <div class="spec-val"><p>Triggered via a Telegram message with a ticker and time horizon, the agent pulls financial data and recent news, then uses Claude to synthesize a clean, brief-style summary delivered by email.</p></div>
+    </div>
+    <div class="visual">
+      <div class="visual-box">Screenshot placeholder — email report / Telegram flow</div>
+    </div>
+  </div>
+
+  <footer>
+    Built and deployed by Aditya Tandel · GitHub → Vercel
+  </footer>
+</div>
+
 </body>
 </html>
