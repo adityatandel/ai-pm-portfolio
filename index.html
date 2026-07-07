@@ -204,70 +204,23 @@
   <header>
     <p class="eyebrow">Product Manager · AI Builder</p>
     <h1>Aditya Tandel</h1>
-    <p class="lede">Senior Product Manager who scopes, builds, and ships working AI-powered tools — with a deliberate eye on cost, privacy, and the tradeoffs behind every technical choice.</p>
+    <p class="lede">Senior Product Manager who scopes and builds working, dev-ready prototypes — with a deliberate eye on cost, privacy, requirements, and technical tradeoffs.</p>
     <div class="header-meta">
-      <a href="mailto:you@example.com">Email</a>
-      <a href="#">LinkedIn</a>
-      <a href="#">Resume</a>
-      <a href="#">GitHub</a>
+      <a href="https://www.linkedin.com/in/adityatandel/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </header>
 
-  <div class="section-label first">Enterprise Prototype</div>
-
-  <!-- PROJECT 1: Notification Management Prototype -->
-  <div class="project">
-    <div class="project-head">
-      <h2 class="project-title">Notification Management Prototype</h2>
-      <p class="project-sub">An end-to-end approval workflow for high-stakes notifications, built from a written PRD to a clickable prototype.</p>
-    </div>
-    <div class="spec">
-      <div class="spec-key">Problem</div>
-      <div class="spec-val"><p>Teams need to send urgent notifications (e.g. outage alerts) to different user groups, but high-stakes messages require stakeholder approval first — with a full audit trail of who approved what, and when.</p></div>
-    </div>
-    <div class="spec">
-      <div class="spec-key">Why AI</div>
-      <div class="spec-val"><p>Used Claude to go from a written business requirements doc straight to a working, clickable prototype — confirming scope and page plan before building, to skip the design-to-dev handoff cycle and validate the workflow with stakeholders in hours, not weeks.</p></div>
-    </div>
-    <div class="spec">
-      <div class="spec-key">Stack</div>
-      <div class="spec-val">
-        <div class="stack-list">
-          <span class="stack-item">Claude</span>
-          <span class="stack-item">HTML</span>
-          <span class="stack-item">CSS</span>
-          <span class="stack-item">JavaScript</span>
-        </div>
-      </div>
-    </div>
-    <div class="spec">
-      <div class="spec-key">Cost</div>
-      <div class="spec-val"><span class="cost-tag">$0 — static file, no hosting or API cost</span></div>
-    </div>
-    <div class="spec">
-      <div class="spec-key">Description</div>
-      <div class="spec-val"><p>Compose a notification, route it to primary/secondary approvers, simulate the approval email with Accept/Reject actions, and log every notification's status — Pending, Approved, Rejected, Sent — in a searchable history table.</p></div>
-    </div>
-    <div class="visual">
-      <div class="visual-box">Screenshot placeholder — compose form / history table</div>
-    </div>
-  </div>
-
-  <div class="section-label">Personal Projects</div>
+  <div class="section-label first">Personal Projects</div>
 
   <!-- PROJECT 2: Newsletter Digest Agent -->
   <div class="project">
     <div class="project-head">
       <h2 class="project-title">Newsletter Digest Agent</h2>
-      <p class="project-sub">An automated pipeline that summarizes newsletters so nothing valuable gets lost in an unread inbox.</p>
+      <p class="project-sub">An automated pipeline that summarizes unread newsletters based on my personal interests, so nothing worth reading gets lost in the AI news pile.</p>
     </div>
     <div class="spec">
       <div class="spec-key">Problem</div>
       <div class="spec-val"><p>Newsletters pile up unread — valuable content gets lost with no easy way to scan summaries before deciding what's worth reading.</p></div>
-    </div>
-    <div class="spec">
-      <div class="spec-key">Why AI</div>
-      <div class="spec-val"><p>Used Claude to evaluate three architecture options against cost, technical depth, and maintainability, then to write and debug the chosen implementation end to end.</p></div>
     </div>
     <div class="spec">
       <div class="spec-key">Stack</div>
@@ -275,20 +228,20 @@
         <div class="stack-list">
           <span class="stack-item">Python</span>
           <span class="stack-item">Gmail IMAP</span>
+          <span class="stack-item">BeautifulSoup</span>
           <span class="stack-item">Claude API</span>
+          <span class="stack-item">Groq API</span>
+          <span class="stack-item">Tavily</span>
+          <span class="stack-item">Cron</span>
         </div>
       </div>
     </div>
     <div class="spec">
-      <div class="spec-key">Cost</div>
-      <div class="spec-val"><span class="cost-tag">~$0.01–0.03 per newsletter summarized</span></div>
-    </div>
-    <div class="spec">
       <div class="spec-key">Description</div>
-      <div class="spec-val"><p>Connects to a dedicated Gmail inbox via IMAP, pulls new newsletters, summarizes each with Claude, and stores the digest for quick scanning — replacing manual newsletter triage with an automated pipeline.</p></div>
+      <div class="spec-val"><p>Connects to a dedicated Gmail inbox via IMAP, pulls unread newsletters, strips them to clean text, summarizes each with AI, enriches with related research links, and delivers a daily HTML digest by email — replacing manual newsletter triage with an automated pipeline.</p></div>
     </div>
     <div class="visual">
-      <div class="visual-box">Screenshot placeholder — digest output / architecture</div>
+      <img src="assets/images/newsletter-pipeline.png" alt="Newsletter digest AI agent technology pipeline: Newsletters to Gmail inbox, fetched via Python and IMAP, parsed with BeautifulSoup, summarized by Groq AI, enriched with Tavily search, built into an HTML digest, and delivered to inbox daily via cron." style="width:100%; border-radius:4px; border:1px solid var(--line); display:block;">
     </div>
   </div>
 
