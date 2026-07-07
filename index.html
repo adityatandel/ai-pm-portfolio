@@ -179,6 +179,26 @@
     text-align:center;
     padding:20px;
   }
+  .visual-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+  }
+  .visual-grid img{
+    width:100%;
+    display:block;
+    border-radius:4px;
+    border:1px solid var(--line);
+  }
+  .visual-note{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--muted);
+    margin:12px 2px 0;
+  }
+  @media (max-width:640px){
+    .visual-grid{ grid-template-columns:1fr; }
+  }
 
   footer{
     padding:64px 0 80px;
@@ -281,7 +301,10 @@
       <div class="spec-val"><p>Triggered via a Telegram message with a ticker and time horizon, the agent pulls financial data and recent news, then uses Claude to synthesize a clean, brief-style summary delivered by email.</p></div>
     </div>
     <div class="visual">
-      <div class="visual-box">Screenshot placeholder — email report / Telegram flow</div>
+      <div class="visual-grid">
+        <img src="assets/images/stock-research-1.png" alt="Stock research agent AI recommendation view showing a Buy signal, expense ratio, dividend yield, and AI-generated bullet summary for a Vanguard ETF.">
+        <img src="assets/images/stock-research-2.png" alt="Stock research agent price chart and performance panel showing 1-year price history, annualised returns, and asset mix.">
+      </div>
     </div>
   </div>
 
@@ -320,7 +343,11 @@
       <div class="spec-val"><p>A single self-contained HTML dashboard that parses a monthly spreadsheet export entirely in the browser and renders account and net-worth charts — no login, no server, no data transmission.</p></div>
     </div>
     <div class="visual">
-      <div class="visual-box">Screenshot placeholder — dashboard charts (sample data)</div>
+      <div class="visual-grid">
+        <img src="assets/images/finance-dashboard-1.png" alt="Personal finance dashboard net worth view showing total net worth, liquid, investments, and real estate equity over time.">
+        <img src="assets/images/finance-dashboard-2.png" alt="Personal finance dashboard detail views showing liquid accounts, monthly cash flow, asset class breakdown, and target vs actual allocation.">
+      </div>
+      <p class="visual-note">Note: all figures shown are sample/made-up data for illustration — not real account balances.</p>
     </div>
   </div>
 
