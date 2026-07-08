@@ -200,6 +200,81 @@
     .visual-grid{ grid-template-columns:1fr; }
   }
 
+  /* Lightbox */
+  .project-img{
+    cursor:zoom-in;
+    transition:opacity 0.15s ease;
+  }
+  .project-img:hover{
+    opacity:0.88;
+  }
+  .lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(20,19,17,0.88);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:40px;
+    z-index:1000;
+    cursor:zoom-out;
+  }
+  .lightbox.open{
+    display:flex;
+  }
+  .lightbox img{
+    max-width:100%;
+    max-height:100%;
+    border-radius:4px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.4);
+  }
+  .lightbox-close{
+    position:fixed;
+    top:24px;
+    right:32px;
+    color:#F2F1EC;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    background:none;
+    border:1px solid rgba(242,241,236,0.3);
+    padding:8px 14px;
+    border-radius:3px;
+    cursor:pointer;
+  }
+  .lightbox-close:hover{
+    border-color:#F2F1EC;
+  }
+
+  /* Skills */
+  .skills-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:8px 32px;
+    margin-bottom:28px;
+  }
+  .skill-item{
+    display:flex;
+    gap:14px;
+    padding:20px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .skill-item:last-child{
+    border-bottom:none;
+  }
+  .skill-marker{
+    color:var(--accent);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.95rem;
+    line-height:1.55;
+    flex-shrink:0;
+  }
+  .skill-text strong{
+    font-weight:600;
+  }
+
   footer{
     padding:64px 0 80px;
     color:var(--muted);
@@ -230,7 +305,32 @@
     </div>
   </header>
 
-  <div class="section-label first">Personal Projects</div>
+  <div class="section-label first">AI Skills</div>
+
+  <div class="skills-card">
+    <div class="skill-item">
+      <span class="skill-marker">—</span>
+      <span class="skill-text"><strong>Context-efficient prompting</strong> — structuring prompts and conversation context to get the right output in fewer iterations, minimizing token use</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-marker">—</span>
+      <span class="skill-text"><strong>Rapid prototyping</strong> — turning an idea into a working HTML/JS prototype without a full design-to-dev handoff</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-marker">—</span>
+      <span class="skill-text"><strong>Cost-conscious architecture</strong></span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-marker">—</span>
+      <span class="skill-text"><strong>Claude</strong> — Sonnet/Opus, Claude API, Claude Projects</span>
+    </div>
+    <div class="skill-item">
+      <span class="skill-marker">—</span>
+      <span class="skill-text"><strong>Vercel and Git/GitHub</strong> — version control</span>
+    </div>
+  </div>
+
+  <div class="section-label">Personal Projects</div>
 
   <!-- PROJECT 2: Newsletter Digest Agent -->
   <div class="project">
@@ -261,7 +361,7 @@
       <div class="spec-val"><p>Connects to a dedicated Gmail inbox via IMAP, pulls unread newsletters, strips them to clean text, summarizes each with AI, enriches with related research links, and delivers a daily HTML digest by email — replacing manual newsletter triage with an automated pipeline.</p></div>
     </div>
     <div class="visual">
-      <img src="assets/images/newsletter-pipeline.png" alt="Newsletter digest AI agent technology pipeline: Newsletters to Gmail inbox, fetched via Python and IMAP, parsed with BeautifulSoup, summarized by Groq AI, enriched with Tavily search, built into an HTML digest, and delivered to inbox daily via cron." style="width:100%; border-radius:4px; border:1px solid var(--line); display:block;">
+      <img class="project-img" onclick="openLightbox(this.src)" src="assets/images/newsletter-pipeline.png" alt="Newsletter digest AI agent technology pipeline: Newsletters to Gmail inbox, fetched via Python and IMAP, parsed with BeautifulSoup, summarized by Groq AI, enriched with Tavily search, built into an HTML digest, and delivered to inbox daily via cron." style="width:100%; border-radius:4px; border:1px solid var(--line); display:block;">
     </div>
   </div>
 
@@ -302,8 +402,8 @@
     </div>
     <div class="visual">
       <div class="visual-grid">
-        <img src="assets/images/stock-research-1.png" alt="Stock research agent AI recommendation view showing a Buy signal, expense ratio, dividend yield, and AI-generated bullet summary for a Vanguard ETF.">
-        <img src="assets/images/stock-research-2.png" alt="Stock research agent price chart and performance panel showing 1-year price history, annualised returns, and asset mix.">
+        <img class="project-img" onclick="openLightbox(this.src)" src="assets/images/stock-research-1.png" alt="Stock research agent AI recommendation view showing a Buy signal, expense ratio, dividend yield, and AI-generated bullet summary for a Vanguard ETF.">
+        <img class="project-img" onclick="openLightbox(this.src)" src="assets/images/stock-research-2.png" alt="Stock research agent price chart and performance panel showing 1-year price history, annualised returns, and asset mix.">
       </div>
     </div>
   </div>
@@ -344,8 +444,8 @@
     </div>
     <div class="visual">
       <div class="visual-grid">
-        <img src="assets/images/finance-dashboard-1.png" alt="Personal finance dashboard net worth view showing total net worth, liquid, investments, and real estate equity over time.">
-        <img src="assets/images/finance-dashboard-2.png" alt="Personal finance dashboard detail views showing liquid accounts, monthly cash flow, asset class breakdown, and target vs actual allocation.">
+        <img class="project-img" onclick="openLightbox(this.src)" src="assets/images/finance-dashboard-1.png" alt="Personal finance dashboard net worth view showing total net worth, liquid, investments, and real estate equity over time.">
+        <img class="project-img" onclick="openLightbox(this.src)" src="assets/images/finance-dashboard-2.png" alt="Personal finance dashboard detail views showing liquid accounts, monthly cash flow, asset class breakdown, and target vs actual allocation.">
       </div>
       <p class="visual-note">Note: all figures shown are sample/made-up data for illustration — not real account balances.</p>
     </div>
@@ -355,6 +455,27 @@
     Built and deployed by Aditya Tandel · GitHub → Vercel
   </footer>
 </div>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox(event)">Close ✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(e) {
+    if (e) e.stopPropagation();
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
 
 </body>
 </html>
