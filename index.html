@@ -248,49 +248,41 @@
   }
 
   /* Skills */
-  .skills-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-    margin-bottom:28px;
-  }
-  .skill-chip{
+  .skills-list{
     background:var(--card);
     border:1px solid var(--line);
     border-radius:6px;
-    padding:22px 24px;
-    transition:border-color 0.15s ease, transform 0.15s ease;
+    padding:8px 32px;
+    margin-bottom:28px;
   }
-  .skill-chip:hover{
-    border-color:var(--accent);
-    transform:translateY(-1px);
+  .skill-row{
+    display:flex;
+    gap:16px;
+    padding:22px 0;
   }
-  .skill-chip .dot{
-    width:8px;
-    height:8px;
+  .skill-row + .skill-row{
+    border-top:1px solid var(--line);
+  }
+  .skill-row .dot{
+    width:6px;
+    height:6px;
     border-radius:50%;
     background:var(--accent);
-    display:block;
-    margin-bottom:14px;
+    flex-shrink:0;
+    margin-top:9px;
   }
-  .skill-chip h3{
+  .skill-row h3{
     font-family:'Inter', sans-serif;
     font-weight:600;
-    font-size:1.02rem;
-    margin:0 0 8px;
+    font-size:1rem;
+    margin:0 0 4px;
     letter-spacing:-0.005em;
   }
-  .skill-chip p{
+  .skill-row p{
     color:var(--muted);
-    font-size:0.9rem;
+    font-size:0.92rem;
     line-height:1.5;
     margin:0;
-  }
-  .skill-chip.full{
-    grid-column:1 / -1;
-  }
-  @media (max-width:640px){
-    .skills-grid{ grid-template-columns:1fr; }
   }
 
   footer{
@@ -325,31 +317,41 @@
 
   <div class="section-label first">AI Skills</div>
 
-  <div class="skills-grid">
-    <div class="skill-chip">
+  <div class="skills-list">
+    <div class="skill-row">
       <span class="dot"></span>
-      <h3>Context-efficient prompting</h3>
-      <p>Structuring prompts and conversation context to get the right output in fewer iterations, minimizing token use.</p>
+      <div>
+        <h3>Context-efficient prompting</h3>
+        <p>Structuring prompts and conversation context to get the right output in fewer iterations, minimizing token use.</p>
+      </div>
     </div>
-    <div class="skill-chip">
+    <div class="skill-row">
       <span class="dot"></span>
-      <h3>Rapid prototyping</h3>
-      <p>Turning an idea into a working HTML/JS prototype without a full design-to-dev handoff.</p>
+      <div>
+        <h3>Rapid prototyping</h3>
+        <p>Turning an idea into a working HTML/JS prototype without a full design-to-dev handoff.</p>
+      </div>
     </div>
-    <div class="skill-chip">
+    <div class="skill-row">
       <span class="dot"></span>
-      <h3>Cost-conscious architecture</h3>
-      <p>Weighing free-tier limits and pay-per-use tradeoffs before committing to a build.</p>
+      <div>
+        <h3>Cost-conscious architecture</h3>
+        <p>Weighing free-tier limits and pay-per-use tradeoffs before committing to a build.</p>
+      </div>
     </div>
-    <div class="skill-chip">
+    <div class="skill-row">
       <span class="dot"></span>
-      <h3>Claude</h3>
-      <p>Sonnet/Opus, Claude API, Claude Projects.</p>
+      <div>
+        <h3>Claude</h3>
+        <p>Sonnet/Opus, Claude API, Claude Projects.</p>
+      </div>
     </div>
-    <div class="skill-chip full">
+    <div class="skill-row">
       <span class="dot"></span>
-      <h3>Vercel and Git/GitHub</h3>
-      <p>Version control and CI-style deploy pipelines, from local commit to live URL.</p>
+      <div>
+        <h3>Vercel and Git/GitHub</h3>
+        <p>Version control and CI-style deploy pipelines, from local commit to live URL.</p>
+      </div>
     </div>
   </div>
 
@@ -439,7 +441,7 @@
     </div>
     <div class="spec">
       <div class="spec-key">Problem</div>
-      <div class="spec-val"><p>Wanted a monthly view of net worth and account balances without handing financial data to any third-party app or cloud service.</p></div>
+      <div class="spec-val"><p>Wanted a visual trend view of personal finances, net worth and investment growth without handing financial data to any paid third-party apps or cloud services.</p></div>
     </div>
     <div class="spec">
       <div class="spec-key">Why AI</div>
