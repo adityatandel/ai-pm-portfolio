@@ -248,31 +248,49 @@
   }
 
   /* Skills */
-  .skills-card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:4px;
-    padding:8px 32px;
+  .skills-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
     margin-bottom:28px;
   }
-  .skill-item{
-    display:flex;
-    gap:14px;
-    padding:20px 0;
-    border-bottom:1px solid var(--line);
+  .skill-chip{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:22px 24px;
+    transition:border-color 0.15s ease, transform 0.15s ease;
   }
-  .skill-item:last-child{
-    border-bottom:none;
+  .skill-chip:hover{
+    border-color:var(--accent);
+    transform:translateY(-1px);
   }
-  .skill-marker{
-    color:var(--accent);
-    font-family:'IBM Plex Mono', monospace;
-    font-size:0.95rem;
-    line-height:1.55;
-    flex-shrink:0;
+  .skill-chip .dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--accent);
+    display:block;
+    margin-bottom:14px;
   }
-  .skill-text strong{
+  .skill-chip h3{
+    font-family:'Inter', sans-serif;
     font-weight:600;
+    font-size:1.02rem;
+    margin:0 0 8px;
+    letter-spacing:-0.005em;
+  }
+  .skill-chip p{
+    color:var(--muted);
+    font-size:0.9rem;
+    line-height:1.5;
+    margin:0;
+  }
+  .skill-chip.full{
+    grid-column:1 / -1;
+  }
+  @media (max-width:640px){
+    .skills-grid{ grid-template-columns:1fr; }
   }
 
   footer{
@@ -307,26 +325,31 @@
 
   <div class="section-label first">AI Skills</div>
 
-  <div class="skills-card">
-    <div class="skill-item">
-      <span class="skill-marker">—</span>
-      <span class="skill-text"><strong>Context-efficient prompting</strong> — structuring prompts and conversation context to get the right output in fewer iterations, minimizing token use</span>
+  <div class="skills-grid">
+    <div class="skill-chip">
+      <span class="dot"></span>
+      <h3>Context-efficient prompting</h3>
+      <p>Structuring prompts and conversation context to get the right output in fewer iterations, minimizing token use.</p>
     </div>
-    <div class="skill-item">
-      <span class="skill-marker">—</span>
-      <span class="skill-text"><strong>Rapid prototyping</strong> — turning an idea into a working HTML/JS prototype without a full design-to-dev handoff</span>
+    <div class="skill-chip">
+      <span class="dot"></span>
+      <h3>Rapid prototyping</h3>
+      <p>Turning an idea into a working HTML/JS prototype without a full design-to-dev handoff.</p>
     </div>
-    <div class="skill-item">
-      <span class="skill-marker">—</span>
-      <span class="skill-text"><strong>Cost-conscious architecture</strong></span>
+    <div class="skill-chip">
+      <span class="dot"></span>
+      <h3>Cost-conscious architecture</h3>
+      <p>Weighing free-tier limits and pay-per-use tradeoffs before committing to a build.</p>
     </div>
-    <div class="skill-item">
-      <span class="skill-marker">—</span>
-      <span class="skill-text"><strong>Claude</strong> — Sonnet/Opus, Claude API, Claude Projects</span>
+    <div class="skill-chip">
+      <span class="dot"></span>
+      <h3>Claude</h3>
+      <p>Sonnet/Opus, Claude API, Claude Projects.</p>
     </div>
-    <div class="skill-item">
-      <span class="skill-marker">—</span>
-      <span class="skill-text"><strong>Vercel and Git/GitHub</strong> — version control</span>
+    <div class="skill-chip full">
+      <span class="dot"></span>
+      <h3>Vercel and Git/GitHub</h3>
+      <p>Version control and CI-style deploy pipelines, from local commit to live URL.</p>
     </div>
   </div>
 
