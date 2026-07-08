@@ -199,6 +199,17 @@
   @media (max-width:640px){
     .visual-grid{ grid-template-columns:1fr; }
   }
+  .visual-stack{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+  .visual-stack img{
+    width:100%;
+    display:block;
+    border-radius:4px;
+    border:1px solid var(--line);
+  }
 
   /* Lightbox */
   .project-img{
@@ -249,40 +260,22 @@
 
   /* Skills */
   .skills-list{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:6px;
-    padding:8px 32px;
     margin-bottom:28px;
   }
-  .skill-row{
-    display:flex;
-    gap:16px;
-    padding:22px 0;
+  .skill-line{
+    font-size:0.98rem;
+    line-height:1.7;
+    margin:0 0 10px;
   }
-  .skill-row + .skill-row{
-    border-top:1px solid var(--line);
-  }
-  .skill-row .dot{
-    width:6px;
-    height:6px;
-    border-radius:50%;
-    background:var(--accent);
-    flex-shrink:0;
-    margin-top:9px;
-  }
-  .skill-row h3{
-    font-family:'Inter', sans-serif;
+  .skill-line strong{
     font-weight:600;
-    font-size:1rem;
-    margin:0 0 4px;
-    letter-spacing:-0.005em;
   }
-  .skill-row p{
+  .skill-line .sep{
     color:var(--muted);
-    font-size:0.92rem;
-    line-height:1.5;
-    margin:0;
+    margin:0 2px;
+  }
+  .skill-line .desc{
+    color:var(--muted);
   }
 
   footer{
@@ -318,41 +311,10 @@
   <div class="section-label first">AI Skills</div>
 
   <div class="skills-list">
-    <div class="skill-row">
-      <span class="dot"></span>
-      <div>
-        <h3>Context-efficient prompting</h3>
-        <p>Structuring prompts and conversation context to get the right output in fewer iterations, minimizing token use.</p>
-      </div>
-    </div>
-    <div class="skill-row">
-      <span class="dot"></span>
-      <div>
-        <h3>Rapid prototyping</h3>
-        <p>Turning an idea into a working HTML/JS prototype without a full design-to-dev handoff.</p>
-      </div>
-    </div>
-    <div class="skill-row">
-      <span class="dot"></span>
-      <div>
-        <h3>Cost-conscious architecture</h3>
-        <p>Weighing free-tier limits and pay-per-use tradeoffs before committing to a build.</p>
-      </div>
-    </div>
-    <div class="skill-row">
-      <span class="dot"></span>
-      <div>
-        <h3>Claude</h3>
-        <p>Sonnet/Opus, Claude API, Claude Projects.</p>
-      </div>
-    </div>
-    <div class="skill-row">
-      <span class="dot"></span>
-      <div>
-        <h3>Vercel and Git/GitHub</h3>
-        <p>Version control and CI-style deploy pipelines, from local commit to live URL.</p>
-      </div>
-    </div>
+    <p class="skill-line"><strong>Context-efficient prompting</strong><span class="sep">—</span><span class="desc">Structuring prompts and conversation context to get the right output in fewer iterations, minimizing token use.</span></p>
+    <p class="skill-line"><strong>Rapid prototyping</strong><span class="sep">—</span><span class="desc">Turning an idea into a working prototype.</span></p>
+    <p class="skill-line"><strong>Cost-conscious architecture</strong><span class="sep">—</span><span class="desc">Weighing free-tier limits and pay-per-use tradeoffs before committing to a build.</span></p>
+    <p class="skill-line"><strong>Vercel and Git/GitHub</strong><span class="sep">—</span><span class="desc">Version control and CI-style deploy pipelines, from local commit to live URL.</span></p>
   </div>
 
   <div class="section-label">Personal Projects</div>
@@ -386,11 +348,50 @@
       <div class="spec-val"><p>Connects to a dedicated Gmail inbox via IMAP, pulls unread newsletters, strips them to clean text, summarizes each with AI, enriches with related research links, and delivers a daily HTML digest by email — replacing manual newsletter triage with an automated pipeline.</p></div>
     </div>
     <div class="visual">
-      <img class="project-img" onclick="openLightbox(this.src)" src="assets/images/newsletter-pipeline.png" alt="Newsletter digest AI agent technology pipeline: Newsletters to Gmail inbox, fetched via Python and IMAP, parsed with BeautifulSoup, summarized by Groq AI, enriched with Tavily search, built into an HTML digest, and delivered to inbox daily via cron." style="width:100%; border-radius:4px; border:1px solid var(--line); display:block;">
+      <div class="visual-stack">
+        <img class="project-img" onclick="openLightbox(this.src)" src="assets/images/newsletter-inbox-1.png" alt="Gmail inbox showing an AI-generated daily newsletter digest summarizing multiple newsletters into concise bullet points.">
+        <img class="project-img" onclick="openLightbox(this.src)" src="assets/images/newsletter-inbox-2.png" alt="Gmail inbox showing additional AI-summarized newsletter digest entries with three-bullet summaries per source.">
+        <img class="project-img" onclick="openLightbox(this.src)" src="assets/images/newsletter-pipeline.png" alt="Newsletter digest AI agent technology pipeline: Newsletters to Gmail inbox, fetched via Python and IMAP, parsed with BeautifulSoup, summarized by Groq AI, enriched with Tavily search, built into an HTML digest, and delivered to inbox daily via cron.">
+      </div>
     </div>
   </div>
 
-  <!-- PROJECT 3: Stock Research Agent -->
+  <!-- PROJECT 3: Personal Finance Dashboard -->
+  <div class="project">
+    <div class="project-head">
+      <h2 class="project-title">Personal Finance Dashboard</h2>
+      <p class="project-sub">A local-only dashboard built around one hard constraint: financial data never leaves the device.</p>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Problem</div>
+      <div class="spec-val"><p>Wanted a visual trend view of personal finances, net worth and investment growth without handing financial data to any paid third-party apps or cloud services.</p></div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Description</div>
+      <div class="spec-val"><p>A single self-contained HTML dashboard that parses investment data and renders account, investment growth and net-worth charts.</p></div>
+    </div>
+    <div class="spec">
+      <div class="spec-key">Stack</div>
+      <div class="spec-val">
+        <div class="stack-list">
+          <span class="stack-item">HTML</span>
+          <span class="stack-item">CSS</span>
+          <span class="stack-item">JavaScript</span>
+          <span class="stack-item">Chart.js</span>
+          <span class="stack-item">SheetJS</span>
+        </div>
+      </div>
+    </div>
+    <div class="visual">
+      <div class="visual-grid">
+        <img class="project-img" onclick="openLightbox(this.src)" src="assets/images/finance-dashboard-1.png" alt="Personal finance dashboard net worth view showing total net worth, liquid, investments, and real estate equity over time.">
+        <img class="project-img" onclick="openLightbox(this.src)" src="assets/images/finance-dashboard-2.png" alt="Personal finance dashboard detail views showing liquid accounts, monthly cash flow, asset class breakdown, and target vs actual allocation.">
+      </div>
+      <p class="visual-note">Note: all figures shown are sample/made-up data for illustration — not real account balances.</p>
+    </div>
+  </div>
+
+  <!-- PROJECT 4: Stock Research Agent -->
   <div class="project">
     <div class="project-head">
       <h2 class="project-title">Stock Research Agent</h2>
@@ -401,8 +402,8 @@
       <div class="spec-val"><p>Researching a stock or ETF before investing means manually checking multiple sites and reading scattered news — a repetitive, time-consuming process.</p></div>
     </div>
     <div class="spec">
-      <div class="spec-key">Why AI</div>
-      <div class="spec-val"><p>Used Claude to scope the full system, weigh data-source tradeoffs like free API limits versus paid reliability, and design the synthesis logic that turns raw data into a readable summary.</p></div>
+      <div class="spec-key">Description</div>
+      <div class="spec-val"><p>Triggered via user inputs of stock tickers, the app pulls financial data and recent news, then uses Claude to synthesize a clean, brief-style summary and shows relevant stock stats to guide investing decisions based on investment goals.</p></div>
     </div>
     <div class="spec">
       <div class="spec-key">Stack</div>
@@ -417,62 +418,11 @@
         </div>
       </div>
     </div>
-    <div class="spec">
-      <div class="spec-key">Cost</div>
-      <div class="spec-val"><span class="cost-tag">Mostly free — ~$0.01–0.03 per report generated</span></div>
-    </div>
-    <div class="spec">
-      <div class="spec-key">Description</div>
-      <div class="spec-val"><p>Triggered via a Telegram message with a ticker and time horizon, the agent pulls financial data and recent news, then uses Claude to synthesize a clean, brief-style summary delivered by email.</p></div>
-    </div>
     <div class="visual">
       <div class="visual-grid">
         <img class="project-img" onclick="openLightbox(this.src)" src="assets/images/stock-research-1.png" alt="Stock research agent AI recommendation view showing a Buy signal, expense ratio, dividend yield, and AI-generated bullet summary for a Vanguard ETF.">
         <img class="project-img" onclick="openLightbox(this.src)" src="assets/images/stock-research-2.png" alt="Stock research agent price chart and performance panel showing 1-year price history, annualised returns, and asset mix.">
       </div>
-    </div>
-  </div>
-
-  <!-- PROJECT 4: Personal Finance Dashboard -->
-  <div class="project">
-    <div class="project-head">
-      <h2 class="project-title">Personal Finance Dashboard</h2>
-      <p class="project-sub">A local-only dashboard built around one hard constraint: financial data never leaves the device.</p>
-    </div>
-    <div class="spec">
-      <div class="spec-key">Problem</div>
-      <div class="spec-val"><p>Wanted a visual trend view of personal finances, net worth and investment growth without handing financial data to any paid third-party apps or cloud services.</p></div>
-    </div>
-    <div class="spec">
-      <div class="spec-key">Why AI</div>
-      <div class="spec-val"><p>Used Claude to design and build around a non-negotiable privacy requirement — translating "data must never leave the device" into concrete guardrails: no cloud calls, no browser storage, local-only parsing.</p></div>
-    </div>
-    <div class="spec">
-      <div class="spec-key">Stack</div>
-      <div class="spec-val">
-        <div class="stack-list">
-          <span class="stack-item">HTML</span>
-          <span class="stack-item">CSS</span>
-          <span class="stack-item">JavaScript</span>
-          <span class="stack-item">Chart.js</span>
-          <span class="stack-item">SheetJS</span>
-        </div>
-      </div>
-    </div>
-    <div class="spec">
-      <div class="spec-key">Cost</div>
-      <div class="spec-val"><span class="cost-tag">$0 — fully static, in-browser only</span></div>
-    </div>
-    <div class="spec">
-      <div class="spec-key">Description</div>
-      <div class="spec-val"><p>A single self-contained HTML dashboard that parses a monthly spreadsheet export entirely in the browser and renders account and net-worth charts — no login, no server, no data transmission.</p></div>
-    </div>
-    <div class="visual">
-      <div class="visual-grid">
-        <img class="project-img" onclick="openLightbox(this.src)" src="assets/images/finance-dashboard-1.png" alt="Personal finance dashboard net worth view showing total net worth, liquid, investments, and real estate equity over time.">
-        <img class="project-img" onclick="openLightbox(this.src)" src="assets/images/finance-dashboard-2.png" alt="Personal finance dashboard detail views showing liquid accounts, monthly cash flow, asset class breakdown, and target vs actual allocation.">
-      </div>
-      <p class="visual-note">Note: all figures shown are sample/made-up data for illustration — not real account balances.</p>
     </div>
   </div>
 
